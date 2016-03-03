@@ -7,26 +7,37 @@ var
 
 begin
        readln(number);
-     
-	i:=0;
-	repeat 
+	
+	i:=1;
+	while(number[i]<>' ') do
+	begin
 		inc(i);
-	until number[i]=' ';
+	end;
 	
 	number1:=copy(number,1,i);
 	val(number1,source,code);
+
 	delete(number,1,i);
 	
-	writeln(source);
-	
-	i:=0;
-	repeat
+	while(number[i]=' ') do
+		delete(number,1,1);
+		
+	i:=1;
+	while(number[i]<>' ') do
 		inc(i);
-	until number[i]=' ';
-	number2:=copy(number,i,length(number));
-	val(number2,target,code);
-	delete(number,i,length(number));
-	   
+	
+	//numbertemp:=copy(number,1,i);
+	
+	delete(number,1,i);
+	
+	while(number[i]=' ') do
+		delete(number,1,1);
+		
+	val(number,target,code);
+	
+	writeln('source:',source);
+	writeln('target:',target);
+	
 	len:=length(number);
 	
 	temp:=0;
@@ -45,6 +56,7 @@ begin
 	end;
 	
 	writeln(total);
+	
 	
 		
 
