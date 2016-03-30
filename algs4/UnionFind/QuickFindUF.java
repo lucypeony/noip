@@ -41,6 +41,15 @@ public class QuickFindUF
 		qu.union(2,9);
 		qu.union(9, 3);
 		System.out.println(qu.connected(1, 7));
+		
+		QuickUnionImp qui=new QuickUnionImp(10);
+		qui.union(1, 2);
+		qui.union(2, 9);
+		qui.union(1, 8);
+		qui.union(3, 4);
+		qui.union(4, 5);
+		qui.union(1, 4);
+		System.out.println(qui.connected(1, 5));
 	}
 	
 }
