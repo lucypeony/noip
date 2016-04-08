@@ -1,7 +1,7 @@
 #include<iostream>
 #include<string>
 #include<fstream>
-#include<sstream>
+
 using namespace std;
 
 struct mystruct{
@@ -11,35 +11,26 @@ struct mystruct{
 
 int main(){
 	
-	ifstream infile("A-large-practice.in");
-	ofstream outfile("A-large-practice.out");
+	string infileName="A-large-practice.in",outfileName="A-large-practice.out";
+	ifstream infile(infileName.c_str());
+	ofstream outfile(outfileName.c_str());
+	
 	
 	
 	int t;
 	
-	string line0;
-	getline(infile,line0);
-	istringstream iss0(line0);
-	iss0>>t;	
+	infile>>t;
 	int tn=t;
 	while(t--){
 		int c,N;
 		mystruct ms[1000];
-		string line1;
-		getline(infile,line1);
-		istringstream iss1(line1);
-		iss1>>c;
-	//	outfile<<endl;
-		string line2;
-		getline(infile,line2);
-		istringstream iss2(line2);
-		iss2>>N;
 		
-		string line3;
-		getline(infile,line3);
-		istringstream iss3(line3);
+		infile>>c>>N;
+	
 		for(int i=0;i<N;i++){
-			iss3>>ms[i].a;
+			int a;
+			infile>>a;
+			ms[i].a=a;
 			ms[i].b=i;	
 		}
 			
@@ -66,7 +57,7 @@ int main(){
 		bool f=false;
 		for(int i=0;i<N;i++){
 			//bin_sort
-			//cout<<"binary sort";
+			//cout<<"binary search";
 			int bp,ep;
 			bp=0;ep=N;
 			while(bp<ep-1){
