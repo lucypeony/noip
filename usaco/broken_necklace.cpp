@@ -1,45 +1,61 @@
 #include<iostream>
 using namespace std; 
 
-const int max_n=351;
-char necklace[max_n];
+int len;
+const int max_len=351;
+char necklace[max_len];
+
+int mod(int n,int m){
+	if(n<0)
+		n+=m;
+	return n%m;
+}
+
+int bk(int bp,int direction){
+	char last_color='w';
+	int i;
+	if(direction>0)
+		i=bp;
+	else
+		i=mod(bp-1,len);
+		
+	int j;
+	
+	for(j=0;j<len;j++,i=mod(i+direction,len)){
+		
+		if(last_color=='w' && necklace[i]!='w')
+			last_color=necklace[i];
+		
+		if(last_color!='w' && necklace[i]!='w' && last_color!=necklace[i])
+			break;
+		
+	}
+	return j;
+}
+
 
 int main(){
-	int n;
-	cin>>n;
-	for(int i=1;i<=n;i++){
+	cin>>len;
+	for(int i=0;i<len;i++){
 		cin>>necklace[i];
+	}//get input 
+	
+	//break the necklace from every position 
+	int res=1;
+	for(int i=0;i<len;i++){
+		int temp=bk(i,1)+bk(i,-1);
+		if(temp>res)
+			res=temp;
 	}
 	
-	int max_len=-1;
-	for(int i=1;i<=n-1;i++){		//从位置1开始，依次尝试断开
-		//从necklace[i]开始向上查找连续相同的珠子数目 + 从necklace[i-1]开始往下找连续的珠子数目
-		//把两者之和相加，每次for循环比较最大值。
-		int j=i;
-		int len1=0;
-		while(necklace[j]==necklace[j+1] || necklace[j+1]=='w'){
-			len1++;
-			j++;
-			if(j>n)
-				j=1;
-		}
+	if(res>len)
+		res=len;
 		
-		j=i-1;
-		int len2=0;
-		while(necklace[j]==necklace[j-1] || necklace[j-1]=='w'){
-			len2++;
-			j--;
-			if(j<1)
-				j=n;
-		}
-		
-		if(len1+len2>max_len)
-			max_len=len1+len2;
-	}
+	cout<<res;
 	
-	cout<<max_len;
 }
-/*
-	1 2 3 4 5 
 
+/*
+29 
+wwwbbrwrbrbrrbrbrwrwwrbwrwrrb 
 */
