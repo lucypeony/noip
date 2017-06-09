@@ -1,4 +1,3 @@
-
 #include<iostream>
 using namespace std; 
 
@@ -23,11 +22,12 @@ bool trans2(){
 	//test if i row of a equals n-i row of b
 	for(int i=0;i<n;i++){
 		for(int j=0;j<n;j++){
-			if(a[i][j]!=b[n-i-1][j]){
+			if(a[i][j]!=b[n-i-1][n-j-1]){
 				return false;
 			}
 		}
 	}
+	//cout<<" 2 true"<<endl;
 	return true;
 }
 
@@ -43,7 +43,7 @@ bool trans3(){
 	return true;
 }
 
-bool trans4(){
+bool trans4(){					//记住，是水平翻转！！ 
 	for(int i=0;i<n;i++){
 		for(int j=0;j<=n/2;j++){
 			if(a[i][j]!=b[i][n-j-1])
@@ -64,7 +64,7 @@ bool trans5(){
 	bool f1=true,f2=true,f3=true;
 		for(int i=0;i<n;i++){
 		for(int j=0;j<n;j++){
-			if(c[i][j]!=b[n-i-1][j]){
+			if(c[i][j]!=b[j][n-i-1]){
 				f1=false;
 				break;
 			}
@@ -75,7 +75,7 @@ bool trans5(){
 	
 	for(int i=0;i<n;i++){
 		for(int j=0;j<n;j++){
-			if(c[i][j]!=b[n-i-1][j]){
+			if(c[i][j]!=b[n-i-1][n-j-1]){
 				f2=false;
 				break;
 			}
