@@ -24,7 +24,7 @@ int main(){
 	
 	
 	int sum=0;
-	for(int i=0;i<m-1;i++){
+	for(int i=0;i<m-1;i++){     //这里要考虑m远大于c的情况
 		sum+=gap[c-2-i];
 	}
 	
