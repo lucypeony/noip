@@ -26,7 +26,7 @@ int largest[9]={1,3,7,15,31,63,127,255,511};
 int dis(int x,int y){
 	int res=0;
 	int z=x^y;
-	//ÇózÀïÃæÓÐ¶àÉÙ¸ö1¾Í¿ÉÒÔ
+	//求z里面有多少个1就可以
 	while(z>0){
 		int t=z%2;
 		z/=2;
@@ -44,7 +44,7 @@ void solve(){
 	
 	
 		
-		//ÐÂµÄÊýÒª¶ÔÒÔÇ°ËùÓÐµÄres[]ÖÐµÄÊý¾Ýhamming¾àÀë¶¼´óÓÚµÈÓÚD
+		//新的数要对以前所有的res[]中的数据hamming距离都大于等于D
 		//cerr<<Lar<<endl;
 		//cerr<<"enter solve: for is starting: "<<endl; 
 		for(int j=res[count]+1;j<Lar;j++){
